@@ -1,7 +1,7 @@
-name: 'My Coolest Website'
+name: 'My Personal Website'
 description: 'So much potential'
 tagline: 'yada yada'
-url: 'http://dcernst.github.io'
+url: 'https://naalu.github.io/SampleWebsiteTemplate/'
 baseurl: '/SampleWebsite'
 paginate: 10
 
@@ -15,11 +15,11 @@ permalink: pretty
 relative_permalinks: false
 
 # About/contact
-author: Dana C. Ernst
+author: Karl 'Chris' Reger
 
 # GitHub
 github:
-  repo: github.com/dcernst/SampleWebsite
+  repo: https://github.com/Naalu/SampleWebsiteTemplate
 
 # Feed Stuff
 gems:
