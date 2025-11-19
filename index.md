@@ -8,8 +8,8 @@ This website was created using [GitHub Pages](https://pages.github.com) and [Jek
 To contact me, shoot me an [email](mailto:dana.ernst@nau.edu).  Here is my physical work address:
 
 <address>
-Dana C. Ernst, PhD<br />
-Professor<br />
+Karl C. Reger<br />
+Masters Student<br />
 Department of Mathematics &amp; Statistics<br />
 Northern Arizona University<br />
 801 South Osborne Drive<br />
