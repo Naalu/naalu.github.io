@@ -2,7 +2,7 @@ name: 'My Personal Website'
 description: 'So much potential'
 tagline: 'yada yada'
 url: 'https://naalu.github.io/SampleWebsiteTemplate/'
-baseurl: '/SampleWebsite'
+baseurl: '/SampleWebsiteTemplate'
 paginate: 10
 
 markdown: kramdown
