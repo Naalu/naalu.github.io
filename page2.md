@@ -1,6 +1,6 @@
 ---
 title: Page Two
-author: Dana Ernst
+author: Karl Reger
 layout: default
 ---
 
@@ -15,6 +15,7 @@ Making lists is super easy.
 - Just do this.
 - Yeah, it's that easy.
 - Fun, right?
+- Another item
 
 Boom!
 
