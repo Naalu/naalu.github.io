@@ -1,28 +1,49 @@
-name: 'My Personal Website'
-description: 'So much potential'
-tagline: 'yada yada'
-url: 'https://naalu.github.io/SampleWebsiteTemplate/'
-baseurl: '/SampleWebsiteTemplate'
-paginate: 10
+# Site Settings
+name: 'Karl Reger'
+title: 'Karl Reger | Data Scientist & Statistician'
+description: 'Data scientist and statistician specializing in healthcare analytics, machine learning, and applied statistics. Graduate researcher at Northern Arizona University.'
+url: 'https://naalu.github.io'
+baseurl: ''
+author: 'Karl "Chris" Reger'
+email: 'k.c.reger@gmail.com'
 
+# Social
+github_username: naalu
+linkedin_username: chris-reger
+
+# Build Settings
 markdown: kramdown
 highlighter: rouge
-
-# Permalinks
-# Use of `relative_permalinks` ensures post links from the index work properly.
 permalink: pretty
-# permalink: /:year/:month/:title/
-relative_permalinks: false
 
-# About/contact
-author: Karl 'Chris' Reger
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
 
-# GitHub
-github:
-  repo: https://github.com/Naalu/SampleWebsiteTemplate
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "project"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
 
-# Feed Stuff
-gems:
-  - jekyll-feed
-  - jekyll-paginate
+# Plugins
+plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
+
+# Exclude from build
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - node_modules
