@@ -9,7 +9,7 @@ full_width: true
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-7">
-        <p class="text-uppercase text-muted fw-semibold mb-2" style="letter-spacing: 0.1em; font-size: 0.875rem;">Data Scientist & Statistician</p>
+        <p class="text-uppercase text-muted fw-semibold mb-2" style="letter-spacing: 0.1em; font-size: 0.875rem;">Data Scientist &amp; Statistician</p>
         <h1 class="display-4 fw-bold mb-3">Turning complex data into actionable insights</h1>
         <p class="lead text-muted mb-4">
           I'm a graduate statistics student at Northern Arizona University with a Python-first approach to machine learning and deep roots in R-based statistical modeling. From healthcare systems to production ML pipelines, I build solutions that create measurable business impact.
@@ -41,7 +41,7 @@ full_width: true
           <div class="icon-wrapper mb-3">
             <i class="fas fa-code fa-2x text-primary"></i>
           </div>
-          <h5 class="fw-semibold">Python & R</h5>
+          <h5 class="fw-semibold">Python &amp; R</h5>
           <p class="text-muted small mb-0">Bilingual in ML engineering and statistical modeling</p>
         </div>
       </div>
@@ -68,7 +68,7 @@ full_width: true
           <div class="icon-wrapper mb-3">
             <i class="fas fa-users fa-2x text-primary"></i>
           </div>
-          <h5 class="fw-semibold">Teaching & Communication</h5>
+          <h5 class="fw-semibold">Teaching &amp; Communication</h5>
           <p class="text-muted small mb-0">Trained 25+ data scientists with 92% placement rate</p>
         </div>
       </div>
@@ -76,8 +76,101 @@ full_width: true
   </div>
 </section>
 
-<!-- Featured Projects Section -->
+<!-- Methods & Expertise Section -->
 <section class="py-5">
+  <div class="container">
+    <div class="row justify-content-center mb-5">
+      <div class="col-lg-8 text-center">
+        <h2 class="fw-bold mb-3">Statistical &amp; ML Foundations</h2>
+        <p class="text-muted">From classical inference to modern machine learning—I bridge rigorous statistical theory with practical implementation.</p>
+      </div>
+    </div>
+    <div class="row g-4">
+
+      <!-- Statistical Inference -->
+      <div class="col-md-6 col-lg-4">
+        <div class="method-card h-100">
+          <h5 class="fw-semibold mb-3">
+            <i class="fas fa-chart-bar text-primary me-2"></i>Statistical Inference
+          </h5>
+          <div class="math-display mb-3">
+            $$\hat\theta = \arg\max_\theta \mathcal{L}(\theta \mid X)$$
+          </div>
+          <p class="text-muted small">Maximum likelihood estimation, hypothesis testing, confidence intervals, and Bayesian inference for rigorous uncertainty quantification.</p>
+        </div>
+      </div>
+      
+      <!-- Regression & GLMs -->
+      <div class="col-md-6 col-lg-4">
+        <div class="method-card h-100">
+          <h5 class="fw-semibold mb-3">
+            <i class="fas fa-project-diagram text-primary me-2"></i>Regression &amp; GLMs
+          </h5>
+          <div class="math-display mb-3">
+            $$g(E[Y]) = \beta_0 + \beta_1 X_1 + \cdots + \beta_p X_p$$
+          </div>
+          <p class="text-muted small">Linear and generalized linear models, mixed effects, regularization (Ridge, LASSO), and model diagnostics for interpretable predictions.</p>
+        </div>
+      </div>
+      
+      <!-- Machine Learning -->
+      <div class="col-md-6 col-lg-4">
+        <div class="method-card h-100">
+          <h5 class="fw-semibold mb-3">
+            <i class="fas fa-brain text-primary me-2"></i>Machine Learning
+          </h5>
+          <div class="math-display mb-3">
+            $$\min_\theta \frac{1}{n}\sum_{i=1}^{n} L(y_i, f_\theta(x_i)) + \lambda R(\theta)$$
+          </div>
+          <p class="text-muted small">Ensemble methods, gradient boosting, neural networks, and cross-validation for predictive modeling at scale.</p>
+        </div>
+      </div>
+      
+      <!-- Time Series -->
+      <div class="col-md-6 col-lg-4">
+        <div class="method-card h-100">
+          <h5 class="fw-semibold mb-3">
+            <i class="fas fa-chart-line text-primary me-2"></i>Time Series
+          </h5>
+          <div class="math-display mb-3">
+            $$Y_t = \phi_1 Y_{t-1} + \cdots + \theta_q \varepsilon_{t-q} + \varepsilon_t$$
+          </div>
+          <p class="text-muted small">ARIMA, state-space models, seasonality decomposition, and forecasting for temporal data analysis.</p>
+        </div>
+      </div>
+      
+      <!-- Experimental Design -->
+      <div class="col-md-6 col-lg-4">
+        <div class="method-card h-100">
+          <h5 class="fw-semibold mb-3">
+            <i class="fas fa-flask text-primary me-2"></i>Experimental Design
+          </h5>
+          <div class="math-display mb-3">
+            $$\tau = E[Y(1) - Y(0)]$$
+          </div>
+          <p class="text-muted small">A/B testing, causal inference, power analysis, and randomization strategies for measuring treatment effects.</p>
+        </div>
+      </div>
+      
+      <!-- Dimensionality Reduction -->
+      <div class="col-md-6 col-lg-4">
+        <div class="method-card h-100">
+          <h5 class="fw-semibold mb-3">
+            <i class="fas fa-compress-arrows-alt text-primary me-2"></i>Dimensionality Reduction
+          </h5>
+          <div class="math-display mb-3">
+            $$X \approx U_k \Sigma_k V_k^\top$$
+          </div>
+          <p class="text-muted small">PCA, SVD, factor analysis, and embedding methods for feature extraction and visualization.</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="py-5 bg-white">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2 class="fw-bold mb-0">Featured Projects</h2>
