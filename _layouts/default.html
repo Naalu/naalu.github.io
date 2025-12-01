@@ -1,18 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
   
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="{{ site.baseurl }}/favicon.ico">
   <link rel="apple-touch-icon" sizes="180x180" href="{{ site.baseurl }}/assets/img/apple-touch-icon.png">
   
-  <!-- SEO Plugin (handles title, description, Open Graph) -->
+  <!-- SEO Plugin -->
   {% seo %}
   
-  <!-- Additional Open Graph / Social -->
+  <!-- Open Graph -->
   <meta property="og:image" content="{{ site.url }}{{ site.baseurl }}/assets/img/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -40,7 +41,7 @@
   }
   </script>
   
-  <!-- Preconnect for performance -->
+  <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
@@ -57,7 +58,7 @@
   <!-- Font Awesome -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
   
-  <!-- KaTeX for math -->
+  <!-- KaTeX -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
@@ -74,16 +75,36 @@
       });
     });
   </script>
+  
+  <!-- Prevent flash of wrong theme -->
+  <script>
+    (function() {
+      const saved = localStorage.getItem('theme');
+      if (saved) {
+        document.documentElement.setAttribute('data-theme', saved);
+      }
+    })();
+  </script>
 </head>
 
 <body>
-  <!-- Skip to Content (Accessibility) -->
+  <!-- Cursor Glow Effect -->
+  <div class="cursor-glow"></div>
+  
+  <!-- Floating Background Shapes -->
+  <div class="floating-shapes">
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+    <div class="floating-shape"></div>
+  </div>
+
+  <!-- Skip Link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <!-- Navigation -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top border-bottom">
+  <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="{{ site.baseurl }}/">{{ site.name | default: "Karl Reger" }}</a>
+      <a class="navbar-brand" href="{{ site.baseurl }}/">{{ site.name | default: "Karl Reger" }}</a>
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,7 +112,7 @@
       </button>
       
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item">
             <a class="nav-link" href="{{ site.baseurl }}/about/">About</a>
           </li>
@@ -105,25 +126,32 @@
             <a class="nav-link" href="{{ site.baseurl }}/insights/">Insights</a>
           </li>
           {% if site.github_username %}
-          <li class="nav-item ms-lg-3">
-            <a class="nav-link" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub Profile">
+          <li class="nav-item ms-lg-2">
+            <a class="nav-link" href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" aria-label="GitHub Profile">
               <i class="fab fa-github fa-lg"></i>
             </a>
           </li>
           {% endif %}
           {% if site.linkedin_username %}
           <li class="nav-item">
-            <a class="nav-link" href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn Profile">
+            <a class="nav-link" href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" aria-label="LinkedIn Profile">
               <i class="fab fa-linkedin fa-lg"></i>
             </a>
           </li>
           {% endif %}
+          <!-- Theme Toggle -->
+          <li class="nav-item ms-lg-2">
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+              <i class="fas fa-moon"></i>
+              <i class="fas fa-sun"></i>
+            </button>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <!-- Spacer for fixed navbar -->
+  <!-- Navbar Spacer -->
   <div style="height: 76px;"></div>
 
   <!-- Main Content -->
@@ -142,7 +170,7 @@
   </main>
 
   <!-- Footer -->
-  <footer class="footer bg-white border-top mt-5">
+  <footer class="footer mt-5">
     <div class="container py-4">
       <div class="row align-items-center">
         <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
@@ -151,18 +179,18 @@
         </div>
         <div class="col-md-6 text-center text-md-end">
           {% if site.email %}
-          <a href="mailto:{{ site.email }}" class="text-decoration-none me-3" title="Email" aria-label="Email">
-            <i class="fas fa-envelope fa-lg text-secondary"></i>
+          <a href="mailto:{{ site.email }}" class="text-muted text-decoration-none me-3" aria-label="Email">
+            <i class="fas fa-envelope fa-lg"></i>
           </a>
           {% endif %}
           {% if site.github_username %}
-          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="text-decoration-none me-3" title="GitHub" aria-label="GitHub">
-            <i class="fab fa-github fa-lg text-secondary"></i>
+          <a href="https://github.com/{{ site.github_username }}" target="_blank" rel="noopener" class="text-muted text-decoration-none me-3" aria-label="GitHub">
+            <i class="fab fa-github fa-lg"></i>
           </a>
           {% endif %}
           {% if site.linkedin_username %}
-          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="text-decoration-none" title="LinkedIn" aria-label="LinkedIn">
-            <i class="fab fa-linkedin fa-lg text-secondary"></i>
+          <a href="https://linkedin.com/in/{{ site.linkedin_username }}" target="_blank" rel="noopener" class="text-muted text-decoration-none" aria-label="LinkedIn">
+            <i class="fab fa-linkedin fa-lg"></i>
           </a>
           {% endif %}
         </div>

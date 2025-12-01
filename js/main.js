@@ -1,22 +1,105 @@
 /**
  * Karl Reger Portfolio - Main JavaScript
- * Handles animations, scroll effects, and interactivity
+ * Theme toggle, cursor glow, animations
  */
 
 document.addEventListener('DOMContentLoaded', function() {
   
   // ============================================
-  // FADE-IN ON SCROLL (Intersection Observer)
+  // THEME TOGGLE (Dark/Light Mode)
   // ============================================
   
-  const fadeElements = document.querySelectorAll('.fade-in-section, .glance-card, .method-card, .project-card, .card');
+  const themeToggle = document.getElementById('theme-toggle');
+  const html = document.documentElement;
+  
+  // Check for saved theme preference or default to dark
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  html.setAttribute('data-theme', savedTheme);
+  
+  if (themeToggle) {
+    themeToggle.addEventListener('click', function() {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      html.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      
+      // Announce change for screen readers
+      const announcement = newTheme === 'dark' ? 'Dark mode enabled' : 'Light mode enabled';
+      themeToggle.setAttribute('aria-label', announcement);
+    });
+  }
+  
+  // ============================================
+  // CURSOR GLOW EFFECT
+  // ============================================
+  
+  const cursorGlow = document.querySelector('.cursor-glow');
+  
+  if (cursorGlow && window.matchMedia('(hover: hover)').matches) {
+    let mouseX = 0;
+    let mouseY = 0;
+    let glowX = 0;
+    let glowY = 0;
+    const speed = 0.15; // Smooth follow speed
+    
+    // Track mouse position
+    document.addEventListener('mousemove', function(e) {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      cursorGlow.classList.add('visible');
+    });
+    
+    // Hide when mouse leaves window
+    document.addEventListener('mouseleave', function() {
+      cursorGlow.classList.remove('visible');
+    });
+    
+    // Smooth animation loop
+    function animateGlow() {
+      // Ease toward mouse position
+      glowX += (mouseX - glowX) * speed;
+      glowY += (mouseY - glowY) * speed;
+      
+      cursorGlow.style.left = glowX + 'px';
+      cursorGlow.style.top = glowY + 'px';
+      
+      requestAnimationFrame(animateGlow);
+    }
+    
+    animateGlow();
+    
+    // Increase glow intensity on interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .card, .project-card, .glance-card, .method-card');
+    
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', function() {
+        cursorGlow.style.width = '500px';
+        cursorGlow.style.height = '500px';
+        cursorGlow.style.opacity = '1';
+      });
+      
+      el.addEventListener('mouseleave', function() {
+        cursorGlow.style.width = '400px';
+        cursorGlow.style.height = '400px';
+        cursorGlow.style.opacity = '';
+      });
+    });
+  }
+  
+  // ============================================
+  // FADE-IN ON SCROLL
+  // ============================================
+  
+  const fadeElements = document.querySelectorAll('.glance-card, .method-card, .project-card, .card, .fade-in-section');
   
   const fadeObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+    entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Optional: stop observing after animation
-        // fadeObserver.unobserve(entry.target);
+        // Add staggered delay based on index
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+        }, index * 100);
       }
     });
   }, {
@@ -27,33 +110,6 @@ document.addEventListener('DOMContentLoaded', function() {
   fadeElements.forEach(el => {
     el.classList.add('fade-in-section');
     fadeObserver.observe(el);
-  });
-  
-  // ============================================
-  // STAGGERED CHILDREN ANIMATION
-  // ============================================
-  
-  const staggerContainers = document.querySelectorAll('.stagger-children');
-  
-  const staggerObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.2
-  });
-  
-  staggerContainers.forEach(el => staggerObserver.observe(el));
-  
-  // ============================================
-  // HERO SECTION ANIMATION
-  // ============================================
-  
-  const heroElements = document.querySelectorAll('.hero-animate');
-  heroElements.forEach(el => {
-    el.classList.add('visible');
   });
   
   // ============================================
@@ -73,7 +129,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // ============================================
-  // SMOOTH SCROLL FOR ANCHOR LINKS
+  // SMOOTH SCROLL
   // ============================================
   
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -93,35 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
   
   // ============================================
-  // LAZY LOADING FOR IMAGES
-  // ============================================
-  
-  if ('loading' in HTMLImageElement.prototype) {
-    // Native lazy loading supported
-    const lazyImages = document.querySelectorAll('img[data-src]');
-    lazyImages.forEach(img => {
-      img.src = img.dataset.src;
-    });
-  } else {
-    // Fallback for older browsers
-    const lazyObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-          lazyObserver.unobserve(img);
-        }
-      });
-    });
-    
-    document.querySelectorAll('img[data-src]').forEach(img => {
-      lazyObserver.observe(img);
-    });
-  }
-  
-  // ============================================
-  // ACTIVE NAV LINK HIGHLIGHTING
+  // ACTIVE NAV HIGHLIGHTING
   // ============================================
   
   const currentPath = window.location.pathname;
@@ -131,9 +159,31 @@ document.addEventListener('DOMContentLoaded', function() {
     const href = link.getAttribute('href');
     if (href && currentPath.startsWith(href) && href !== '/') {
       link.classList.add('active');
+      link.style.color = 'var(--color-accent)';
     } else if (href === '/' && currentPath === '/') {
       link.classList.add('active');
     }
   });
+  
+  // ============================================
+  // PARALLAX FLOATING SHAPES (Subtle)
+  // ============================================
+  
+  const floatingShapes = document.querySelectorAll('.floating-shape');
+  
+  if (floatingShapes.length > 0 && window.matchMedia('(hover: hover)').matches) {
+    document.addEventListener('mousemove', function(e) {
+      const x = e.clientX / window.innerWidth;
+      const y = e.clientY / window.innerHeight;
+      
+      floatingShapes.forEach((shape, index) => {
+        const speed = (index + 1) * 10;
+        const xOffset = (x - 0.5) * speed;
+        const yOffset = (y - 0.5) * speed;
+        
+        shape.style.transform = `translate(${xOffset}px, ${yOffset}px)`;
+      });
+    });
+  }
   
 });

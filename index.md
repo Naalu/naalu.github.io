@@ -10,9 +10,9 @@ description: "Karl Reger is a data scientist and statistician specializing in he
   <div class="container">
     <div class="row align-items-center">
       <div class="col-lg-7">
-        <p class="text-uppercase text-muted fw-semibold mb-2" style="letter-spacing: 0.1em; font-size: 0.875rem;">Data Scientist &amp; Statistician</p>
+        <p class="text-uppercase fw-semibold mb-2" style="letter-spacing: 0.1em; font-size: 0.875rem; color: var(--color-accent);">Data Scientist &amp; Statistician</p>
         <h1 class="display-4 fw-bold mb-3">Turning complex data into actionable insights</h1>
-        <p class="lead text-muted mb-4">
+        <p class="lead mb-4">
           I'm a graduate statistics student at Northern Arizona University with a Python-first approach to machine learning and deep roots in R-based statistical modeling. From healthcare systems to production ML pipelines, I build solutions that create measurable business impact.
         </p>
         <div class="d-flex flex-wrap gap-2">
@@ -25,22 +25,24 @@ description: "Karl Reger is a data scientist and statistician specializing in he
         </div>
       </div>
       <div class="col-lg-4 offset-lg-1 text-center mt-5 mt-lg-0">
-        <img src="/assets/img/headshot.jpg" alt="Karl Reger"
-             class="rounded-circle img-fluid shadow-lg"
-             style="max-width: 280px; border: 4px solid white;">
+        <div class="hero-headshot d-inline-block">
+          <img src="/assets/img/headshot.jpg" alt="Karl Reger"
+               class="rounded-circle img-fluid"
+               style="max-width: 280px;">
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- At a Glance Section -->
-<section class="py-5 bg-white">
+<section class="py-5 bg-alt">
   <div class="container">
     <div class="row g-4">
       <div class="col-md-6 col-lg-3">
         <div class="glance-card h-100">
-          <div class="icon-wrapper mb-3">
-            <i class="fas fa-code fa-2x text-primary"></i>
+          <div class="icon-wrapper">
+            <i class="fas fa-code fa-2x"></i>
           </div>
           <h5 class="fw-semibold">Python &amp; R</h5>
           <p class="text-muted small mb-0">Bilingual in ML engineering and statistical modeling</p>
@@ -48,8 +50,8 @@ description: "Karl Reger is a data scientist and statistician specializing in he
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="glance-card h-100">
-          <div class="icon-wrapper mb-3">
-            <i class="fas fa-heartbeat fa-2x text-primary"></i>
+          <div class="icon-wrapper">
+            <i class="fas fa-heartbeat fa-2x"></i>
           </div>
           <h5 class="fw-semibold">Healthcare Focus</h5>
           <p class="text-muted small mb-0">Published researcher in health services and biostatistics</p>
@@ -57,8 +59,8 @@ description: "Karl Reger is a data scientist and statistician specializing in he
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="glance-card h-100">
-          <div class="icon-wrapper mb-3">
-            <i class="fas fa-graduation-cap fa-2x text-primary"></i>
+          <div class="icon-wrapper">
+            <i class="fas fa-graduation-cap fa-2x"></i>
           </div>
           <h5 class="fw-semibold">Graduate Research</h5>
           <p class="text-muted small mb-0">MS Statistics with focus on applied ML methods</p>
@@ -66,8 +68,8 @@ description: "Karl Reger is a data scientist and statistician specializing in he
       </div>
       <div class="col-md-6 col-lg-3">
         <div class="glance-card h-100">
-          <div class="icon-wrapper mb-3">
-            <i class="fas fa-users fa-2x text-primary"></i>
+          <div class="icon-wrapper">
+            <i class="fas fa-users fa-2x"></i>
           </div>
           <h5 class="fw-semibold">Teaching &amp; Communication</h5>
           <p class="text-muted small mb-0">Trained 25+ data scientists with 92% placement rate</p>
@@ -171,7 +173,7 @@ description: "Karl Reger is a data scientist and statistician specializing in he
 </section>
 
 <!-- Featured Projects Section -->
-<section class="py-5 bg-white">
+<section class="py-5 bg-alt">
   <div class="container">
     <div class="d-flex justify-content-between align-items-center mb-4">
       <h2 class="fw-bold mb-0">Featured Projects</h2>
@@ -190,7 +192,7 @@ description: "Karl Reger is a data scientist and statistician specializing in he
                 </div>
                 <h5 class="card-title mb-0">Health Services Research</h5>
               </div>
-              <p class="card-text text-muted">First-author statistical research analyzing patient outcomes, currently under peer review in <em>Cancers</em>.</p>
+              <p class="card-text">First-author statistical research analyzing patient outcomes, currently under peer review in <em>Cancers</em>.</p>
               <div class="mt-3">
                 <span class="tag">R</span>
                 <span class="tag">Statistical Modeling</span>
@@ -212,7 +214,7 @@ description: "Karl Reger is a data scientist and statistician specializing in he
                 </div>
                 <h5 class="card-title mb-0">Medicare Opioid Analysis</h5>
               </div>
-              <p class="card-text text-muted">Identified prescription abuse patterns in Medicare data using ensemble ML methods with an ethical AI framework.</p>
+              <p class="card-text">Identified prescription abuse patterns in Medicare data using ensemble ML methods with an ethical AI framework.</p>
               <div class="mt-3">
                 <span class="tag">Python</span>
                 <span class="tag">Machine Learning</span>
@@ -234,7 +236,7 @@ description: "Karl Reger is a data scientist and statistician specializing in he
                 </div>
                 <h5 class="card-title mb-0">ML Address Validation</h5>
               </div>
-              <p class="card-text text-muted">Built a production ML pipeline for New Zealand's tax authority, saving NZ$100,000+ annually.</p>
+              <p class="card-text">Built a production ML pipeline for New Zealand's tax authority, saving NZ$100,000+ annually.</p>
               <div class="mt-3">
                 <span class="tag">Python</span>
                 <span class="tag">Production ML</span>
@@ -250,7 +252,7 @@ description: "Karl Reger is a data scientist and statistician specializing in he
 </section>
 
 <!-- Contact CTA Section -->
-<section class="py-5 bg-light">
+<section class="py-5">
   <div class="container">
     <div class="row justify-content-center text-center">
       <div class="col-lg-8">
