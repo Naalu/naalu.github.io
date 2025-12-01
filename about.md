@@ -4,10 +4,6 @@ title: About
 permalink: /about/
 ---
 
-<div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-lg-8">
-
 # About Me
 
 I'm a data scientist and statistician pursuing my Master's in Statistics at Northern Arizona University, where I'm also conducting peer-reviewed research in health services analytics. My work sits at the intersection of rigorous statistical methodology and practical machine learning—building models that don't just perform well on benchmarks, but create real-world impact.
@@ -43,8 +39,4 @@ I'm seeking data scientist and ML engineer roles where I can apply this blend of
 <div class="mt-5">
   <a href="/projects/" class="btn btn-primary me-2">See My Work</a>
   <a href="/assets/files/Karl_Reger_Resume.pdf" class="btn btn-outline-secondary" target="_blank">Download Resume</a>
-</div>
-
-    </div>
-  </div>
 </div>

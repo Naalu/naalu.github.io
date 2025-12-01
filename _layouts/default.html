@@ -84,9 +84,19 @@
   <!-- Spacer for fixed navbar -->
   <div style="height: 76px;"></div>
 
-  <!-- Main Content -->
+<!-- Main Content -->
   <main>
-    {{ content }}
+    {% if page.full_width %}
+      {{ content }}
+    {% else %}
+      <div class="container py-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-8">
+            {{ content }}
+          </div>
+        </div>
+      </div>
+    {% endif %}
   </main>
 
   <!-- Footer -->
