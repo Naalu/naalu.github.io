@@ -6,8 +6,6 @@ full_width: true
 description: "Data science and machine learning projects by Karl Reger, including healthcare analytics, production ML systems, and statistical research."
 ---
 
-<div class="container py-5">
-
 # Projects
 
 A selection of work that demonstrates my approach to solving real problems with data. Each project includes the business context, methodology, tools used, and measurable outcomes.
