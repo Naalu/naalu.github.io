@@ -2,6 +2,7 @@
 layout: default
 title: Resume
 permalink: /resume/
+description: "Karl Reger's resume: MS Statistics candidate, data scientist with experience in healthcare analytics, ML engineering, and technical education."
 ---
 
 <div class="d-flex justify-content-between align-items-center mb-4">

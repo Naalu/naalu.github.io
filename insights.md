@@ -2,6 +2,7 @@
 layout: default
 title: Insights
 permalink: /insights/
+description: "Articles and insights on applied data science, statistical methods, healthcare analytics, and machine learning by Karl Reger."
 ---
 
 # Insights

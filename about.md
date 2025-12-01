@@ -2,6 +2,7 @@
 layout: default
 title: About
 permalink: /about/
+description: "Learn about Karl Reger's journey from Navy nuclear engineering through data science education to graduate statistics research, and the skills he brings to DS/ML roles."
 ---
 
 # About Me

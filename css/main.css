@@ -1,5 +1,6 @@
 /* ============================================
    Karl Reger Portfolio – Main Stylesheet
+   Following 2025 DS/ML Portfolio Best Practices
    ============================================ */
 
 /* CSS Variables */
@@ -10,216 +11,143 @@
   --color-text-muted: #4A5568;
   --color-accent: #0D9488;
   --color-accent-hover: #0F766E;
+  --color-accent-light: #E0F2F1;
+  --color-accent-medium: #B2DFDB;
   --color-border: #E2E8F0;
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 12px 24px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 20px 40px rgba(0, 0, 0, 0.1);
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
 }
 
-/* Base */
+/* ============================================
+   BASE STYLES
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-sans);
-  font-size: 1rem;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
   line-height: 1.6;
   color: var(--color-text);
   background-color: var(--color-bg);
 }
 
-/* Typography */
+/* ============================================
+   TYPOGRAPHY - Fluid Scaling with clamp()
+   ============================================ */
+
 h1, h2, h3, h4, h5, h6 {
   font-weight: 600;
   line-height: 1.2;
   color: var(--color-text);
 }
 
-h1 { font-size: 2.75rem; font-weight: 700; }
-h2 { font-size: 2rem; }
-h3 { font-size: 1.5rem; }
+h1, .h1 {
+  font-size: clamp(2rem, 1.5rem + 2.5vw, 3.25rem);
+  font-weight: 700;
+}
+
+h2, .h2 {
+  font-size: clamp(1.5rem, 1.25rem + 1.25vw, 2.25rem);
+}
+
+h3, .h3 {
+  font-size: clamp(1.25rem, 1.1rem + 0.75vw, 1.75rem);
+}
+
+h4, .h4 {
+  font-size: clamp(1.125rem, 1rem + 0.5vw, 1.375rem);
+}
+
+.display-4 {
+  font-size: clamp(2.25rem, 1.75rem + 2.5vw, 3.5rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+}
+
+.lead {
+  font-size: clamp(1.0625rem, 1rem + 0.3vw, 1.25rem);
+  line-height: 1.7;
+}
+
+p {
+  margin-bottom: 1rem;
+}
 
 a {
   color: var(--color-accent);
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color var(--transition-fast);
 }
 
 a:hover {
   color: var(--color-accent-hover);
 }
 
-/* Navbar */
+/* ============================================
+   SKIP TO CONTENT (Accessibility)
+   ============================================ */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-accent);
+  color: white;
+  padding: 8px 16px;
+  z-index: 9999;
+  transition: top var(--transition-fast);
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ============================================
+   NAVBAR
+   ============================================ */
+
+.navbar {
+  transition: box-shadow var(--transition-base);
+}
+
+.navbar.scrolled {
+  box-shadow: var(--shadow-md);
+}
+
 .navbar-brand {
   font-size: 1.25rem;
+  font-weight: 700;
   color: var(--color-text) !important;
 }
 
 .nav-link {
   color: var(--color-text-muted) !important;
   font-weight: 500;
-  transition: color 0.2s ease;
+  padding: 0.5rem 1rem !important;
+  transition: color var(--transition-fast);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
   color: var(--color-accent) !important;
 }
 
-/* Hero Section */
-.hero {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, #FFFFFF 0%, #F0FDFA 100%);
-}
-
-.hero h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero .lead {
-  font-size: 1.25rem;
-  color: var(--color-text-muted);
-  max-width: 600px;
-}
-
-/* Buttons */
-.btn-primary {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-  font-weight: 500;
-  padding: 0.625rem 1.5rem;
-  transition: all 0.2s ease;
-}
-
-.btn-primary:hover {
-  background-color: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
-  transform: translateY(-1px);
-}
-
-.btn-outline-secondary {
-  color: var(--color-text-muted);
-  border-color: var(--color-border);
-  font-weight: 500;
-}
-
-.btn-outline-secondary:hover {
-  background-color: var(--color-surface);
-  border-color: var(--color-text-muted);
-}
-
-/* Cards */
-.card {
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  background: var(--color-surface);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-}
-
-.card-title {
-  font-weight: 600;
-  color: var(--color-text);
-}
-
-/* Project Tags */
-.tag {
-  display: inline-block;
-  padding: 0.25rem 0.625rem;
-  font-size: 0.75rem;
-  font-weight: 500;
-  background-color: #E0F2F1;
-  color: var(--color-accent);
-  border-radius: 9999px;
-  margin-right: 0.375rem;
-  margin-bottom: 0.375rem;
-}
-
-/* Highlight Boxes */
-.highlight-box {
-  background: var(--color-surface);
-  border-left: 4px solid var(--color-accent);
-  padding: 1.5rem;
-  border-radius: 0 0.5rem 0.5rem 0;
-  margin: 1.5rem 0;
-}
-
-/* Fade-in animation */
-.fade-in {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Code */
-code {
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  background-color: #F1F5F9;
-  padding: 0.125rem 0.375rem;
-  border-radius: 0.25rem;
-}
-
-pre {
-  background-color: #1E293B;
-  color: #E2E8F0;
-  padding: 1.25rem;
-  border-radius: 0.5rem;
-  overflow-x: auto;
-}
-
-pre code {
-  background: transparent;
-  padding: 0;
-  color: inherit;
-}
-
-/* Section Spacing */
-section {
-  padding: 4rem 0;
-}
-
-/* Footer */
-.footer {
-  background-color: var(--color-surface);
-}
-
-/* At a Glance Cards */
-.glance-card {
-  text-align: center;
-  padding: 1.5rem;
-}
-
-.glance-card i {
-  font-size: 2rem;
-  color: var(--color-accent);
-  margin-bottom: 1rem;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .hero h1 {
-    font-size: 2.25rem;
-  }
-  
-  section {
-    padding: 3rem 0;
-  }
-}
-
 /* ============================================
-   HOME PAGE STYLES
-   Add these to the bottom of css/main.css
+   HERO SECTION
    ============================================ */
 
-/* Hero Section */
 .hero {
-  padding: 5rem 0;
+  padding: clamp(3rem, 5vw, 6rem) 0;
   background: linear-gradient(135deg, #FFFFFF 0%, #F0FDFA 50%, #E0F2F1 100%);
   position: relative;
   overflow: hidden;
@@ -236,128 +164,44 @@ section {
   pointer-events: none;
 }
 
-.hero .display-4 {
-  font-size: 2.75rem;
-  line-height: 1.15;
-  color: var(--color-text);
-}
-
 .hero .lead {
-  font-size: 1.125rem;
-  line-height: 1.7;
+  color: var(--color-text-muted);
+  max-width: 600px;
 }
 
-@media (min-width: 992px) {
-  .hero {
-    padding: 6rem 0;
+/* Hero animations */
+.hero-animate {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.hero-animate.visible {
+  animation: heroFadeIn 0.6s ease forwards;
+}
+
+.hero-animate:nth-child(1) { animation-delay: 0.1s; }
+.hero-animate:nth-child(2) { animation-delay: 0.2s; }
+.hero-animate:nth-child(3) { animation-delay: 0.3s; }
+.hero-animate:nth-child(4) { animation-delay: 0.4s; }
+
+@keyframes heroFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
-  .hero .display-4 {
-    font-size: 3.25rem;
-  }
 }
 
-/* At a Glance Cards */
-.glance-card {
-  text-align: center;
-  padding: 2rem 1.5rem;
-  border-radius: 1rem;
-  background: #FAFAFA;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+/* ============================================
+   BUTTONS
+   ============================================ */
 
-.glance-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-}
-
-.glance-card .icon-wrapper {
-  width: 60px;
-  height: 60px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%);
-  border-radius: 50%;
-}
-
-.glance-card .icon-wrapper i {
-  color: var(--color-accent) !important;
-}
-
-.glance-card h5 {
-  color: var(--color-text);
-  margin-top: 0.5rem;
-}
-
-/* Project Cards */
-.project-card {
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  background: var(--color-surface);
-  transition: all 0.25s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.1);
-  border-color: var(--color-accent);
-}
-
-.project-card .card-title {
-  color: var(--color-text);
-  font-weight: 600;
-  transition: color 0.2s ease;
-}
-
-.project-card:hover .card-title {
-  color: var(--color-accent);
-}
-
-.project-card .card-text {
-  font-size: 0.9375rem;
-  line-height: 1.6;
-}
-
-.project-icon {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #E0F2F1;
-  border-radius: 0.5rem;
-}
-
-/* Tags */
-.tag {
-  display: inline-block;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.75rem;
+.btn {
   font-weight: 500;
-  background-color: #E0F2F1;
-  color: var(--color-accent);
-  border-radius: 9999px;
-  margin-right: 0.375rem;
-  margin-bottom: 0.375rem;
-  transition: background-color 0.2s ease;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  transition: all var(--transition-fast);
 }
 
-.project-card:hover .tag {
-  background-color: #B2DFDB;
-}
-
-/* Text color helper for icons */
-.text-primary {
-  color: var(--color-accent) !important;
-}
-
-/* Contact CTA Section */
-section.bg-light {
-  background-color: #F8FAFC !important;
-}
-
-/* Button refinements */
 .btn-lg {
   padding: 0.75rem 1.75rem;
   font-size: 1rem;
@@ -366,41 +210,99 @@ section.bg-light {
 .btn-primary {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
+  color: white;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus {
   background-color: var(--color-accent-hover);
   border-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
 .btn-outline-secondary {
   color: var(--color-text-muted);
-  border-color: #CBD5E1;
+  border-color: var(--color-border);
 }
 
-.btn-outline-secondary:hover {
+.btn-outline-secondary:hover,
+.btn-outline-secondary:focus {
   color: var(--color-text);
-  background-color: #F1F5F9;
+  background-color: var(--color-surface);
   border-color: #94A3B8;
+  transform: translateY(-2px);
 }
 
-/* Gap utility (for older browsers) */
-.gap-2 {
-  gap: 0.5rem;
+/* ============================================
+   CARDS - Generic
+   ============================================ */
+
+.card {
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  transition: all var(--transition-base);
 }
 
-/* Method Cards (Math Section) */
+/* ============================================
+   GLANCE CARDS (At a Glance Section)
+   ============================================ */
+
+.glance-card {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  border-radius: 1rem;
+  background: #F8FAFC;
+  transition: all var(--transition-base);
+}
+
+.glance-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  background: var(--color-surface);
+}
+
+.glance-card .icon-wrapper {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent-medium) 100%);
+  border-radius: 50%;
+  transition: transform var(--transition-base);
+}
+
+.glance-card:hover .icon-wrapper {
+  transform: scale(1.1);
+}
+
+.glance-card .icon-wrapper i {
+  color: var(--color-accent) !important;
+}
+
+.glance-card h5 {
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+}
+
+/* ============================================
+   METHOD CARDS (Math/Statistics Section)
+   ============================================ */
+
 .method-card {
   padding: 1.75rem;
   border-radius: 0.75rem;
-  background: #FFFFFF;
+  background: var(--color-surface);
   border: 1px solid var(--color-border);
-  transition: all 0.25s ease;
+  transition: all var(--transition-base);
 }
 
 .method-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-lg);
   border-color: var(--color-accent);
 }
 
@@ -414,21 +316,280 @@ section.bg-light {
   border-radius: 0.5rem;
   padding: 1rem;
   text-align: center;
-  font-size: 0.95rem;
   overflow-x: auto;
 }
 
-.method-card p {
+.method-card p:last-child {
   margin-bottom: 0;
 }
 
-/* KaTeX overrides for method cards */
+/* KaTeX sizing in method cards */
 .method-card .katex {
   font-size: 1em;
 }
 
 .method-card .katex-display {
   margin: 0;
+}
+
+/* ============================================
+   PROJECT CARDS
+   ============================================ */
+
+.project-card {
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--color-accent);
+}
+
+.project-card .card-title {
+  font-weight: 600;
+  color: var(--color-text);
+  transition: color var(--transition-fast);
+}
+
+.project-card:hover .card-title {
+  color: var(--color-accent);
+}
+
+.project-card .card-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.project-icon {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent-light);
+  border-radius: 0.5rem;
+  transition: background-color var(--transition-fast);
+}
+
+.project-card:hover .project-icon {
+  background: var(--color-accent-medium);
+}
+
+/* ============================================
+   TAGS
+   ============================================ */
+
+.tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  background-color: var(--color-accent-light);
+  color: var(--color-accent);
+  border-radius: 9999px;
+  margin-right: 0.375rem;
+  margin-bottom: 0.375rem;
+  transition: background-color var(--transition-fast);
+}
+
+.project-card:hover .tag {
+  background-color: var(--color-accent-medium);
+}
+
+/* ============================================
+   FADE-IN ON SCROLL ANIMATIONS
+   ============================================ */
+
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered children animation */
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+}
+
+.stagger-children.visible > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+.stagger-children.visible > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+/* ============================================
+   CODE & SYNTAX HIGHLIGHTING
+   ============================================ */
+
+code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background-color: #F1F5F9;
+  color: #0F766E;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+}
+
+pre {
+  background-color: #1E293B;
+  color: #E2E8F0;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
   overflow-x: auto;
-  overflow-y: hidden;
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+/* Syntax highlighting (Rouge-compatible) */
+.highlight { background: #1E293B; border-radius: 0.5rem; }
+.highlight .c, .highlight .cm, .highlight .c1 { color: #64748B; font-style: italic; } /* Comments */
+.highlight .k, .highlight .kd, .highlight .kn { color: #C084FC; } /* Keywords */
+.highlight .s, .highlight .s1, .highlight .s2 { color: #86EFAC; } /* Strings */
+.highlight .n, .highlight .nf { color: #93C5FD; } /* Names/Functions */
+.highlight .o { color: #F472B6; } /* Operators */
+.highlight .mi, .highlight .mf { color: #FDBA74; } /* Numbers */
+.highlight .nb { color: #67E8F9; } /* Built-ins */
+.highlight .p { color: #E2E8F0; } /* Punctuation */
+
+/* ============================================
+   HIGHLIGHT BOXES
+   ============================================ */
+
+.highlight-box {
+  background: var(--color-surface);
+  border-left: 4px solid var(--color-accent);
+  padding: 1.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 1.5rem 0;
+}
+
+/* ============================================
+   SECTIONS & SPACING
+   ============================================ */
+
+section {
+  padding: clamp(3rem, 5vw, 5rem) 0;
+}
+
+section.bg-white {
+  background-color: var(--color-surface);
+}
+
+section.bg-light {
+  background-color: #F8FAFC !important;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  background-color: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+}
+
+.footer a {
+  transition: color var(--transition-fast), transform var(--transition-fast);
+  display: inline-block;
+}
+
+.footer a:hover {
+  color: var(--color-accent) !important;
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+.text-primary {
+  color: var(--color-accent) !important;
+}
+
+.text-muted {
+  color: var(--color-text-muted) !important;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-3 {
+  gap: 1rem;
+}
+
+/* ============================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================ */
+
+@media (max-width: 768px) {
+  .hero {
+    text-align: center;
+  }
+  
+  .hero .d-flex {
+    justify-content: center;
+  }
+  
+  .hero img {
+    max-width: 200px !important;
+  }
+  
+  .glance-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .method-card {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn-lg {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.9375rem;
+  }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+
+@media print {
+  .navbar, .footer, .btn {
+    display: none !important;
+  }
+  
+  body {
+    font-size: 12pt;
+    color: black;
+    background: white;
+  }
+  
+  a {
+    color: black;
+    text-decoration: underline;
+  }
 }

@@ -2,6 +2,8 @@
 layout: default
 title: Projects
 permalink: /projects/
+full_width: true
+description: "Data science and machine learning projects by Karl Reger, including healthcare analytics, production ML systems, and statistical research."
 ---
 
 <div class="container py-5">

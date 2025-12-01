@@ -2,6 +2,7 @@
 layout: default
 title: Home
 full_width: true
+description: "Karl Reger is a data scientist and statistician specializing in healthcare analytics, machine learning, and applied statistics. View projects and connect."
 ---
 
 <!-- Hero Section -->

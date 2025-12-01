@@ -1,29 +1,38 @@
+# ===========================================
+# Karl Reger Portfolio - Site Configuration
+# ===========================================
+
 # Site Settings
 name: 'Karl Reger'
 title: 'Karl Reger | Data Scientist & Statistician'
-description: 'Data scientist and statistician specializing in healthcare analytics, machine learning, and applied statistics. Graduate researcher at Northern Arizona University.'
+description: 'Data scientist and statistician specializing in healthcare analytics, machine learning, and applied statistics. Graduate researcher at Northern Arizona University with expertise in Python, R, and production ML systems.'
 url: 'https://naalu.github.io'
 baseurl: ''
-author: 'Karl "Chris" Reger'
+author: 'Karl Reger'
 email: 'k.c.reger@gmail.com'
 
-# Social
+# Social / SEO
 github_username: naalu
 linkedin_username: chris-reger
+# twitter_username: yourhandle  # Uncomment if you have Twitter
 
-# Build Settings
-markdown: kramdown
-highlighter: rouge
-permalink: pretty
+# For jekyll-seo-tag
+tagline: 'Turning complex data into actionable insights'
+logo: /assets/img/headshot.jpg
 
-# Collections
-collections:
-  projects:
-    output: true
-    permalink: /projects/:name/
+# Social links for structured data
+social:
+  name: Karl Reger
+  links:
+    - https://github.com/naalu
+    - https://linkedin.com/in/chris-reger
 
-# Defaults
+# Default image for social sharing
 defaults:
+  - scope:
+      path: ""
+    values:
+      image: /assets/img/og-image.png
   - scope:
       path: ""
       type: "projects"
@@ -35,11 +44,29 @@ defaults:
     values:
       layout: "post"
 
-# Plugins
+# Build Settings
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Collections
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+
+# Plugins (GitHub Pages supported)
 plugins:
+  - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-feed
 
 # Exclude from build
 exclude:
@@ -47,3 +74,6 @@ exclude:
   - Gemfile.lock
   - README.md
   - node_modules
+  - vendor
+  - .git
+  - .gitignore
